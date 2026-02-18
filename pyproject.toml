@@ -1,0 +1,41 @@
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ngx-portfolio"
+version = "1.0.0"
+description = "Cross-platform NGX sector portfolio pipeline (Streamlit + CLI)"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy>=1.23,<3",
+  "pandas>=1.5,<3",
+  "matplotlib>=3.7,<4",
+  "openpyxl>=3.1,<4",
+]
+
+[project.optional-dependencies]
+cvxpy = [
+  "cvxpy>=1.4,<2",
+  "osqp>=0.6.5",
+  "scipy>=1.10,<2",
+]
+lstm = [
+  "tensorflow>=2.16,<2.18",
+  "numpy>=1.23,<2.0",
+]
+dev = [
+  "pytest>=7",
+  "ruff>=0.5",
+]
+
+[project.scripts]
+ngx-run = "ngx_portfolio.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
